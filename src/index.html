@@ -1,0 +1,23 @@
+<html>
+    <head>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+        <script>
+            (function worker() {
+                $.ajax({
+                    url: 'http://localhost:8080/average',
+                    success: function(data) {
+                        $('.result').html(data.averageTemp);
+                    },
+                    complete: function() {
+                        setTimeout(worker, 5000);
+                    }
+                });
+            })();
+        </script>
+    </head>
+    <body>
+        <div>
+            <div class="result"></div>
+        </div>
+    </body>
+</html>
